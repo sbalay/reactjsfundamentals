@@ -1,5 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+
 var app = document.getElementById('app');
 
 var HelloWorld = React.createClass({
@@ -25,13 +26,28 @@ var ProfilePic = React.createClass({
 
 var ProfileLink = React.createClass({
   render: function () {
-    return <a href={'https://github.com/' + this.props.username}>{this.props.username}</a>;
+    return <Link href={'https://github.com/' + this.props.username}>{this.props.username}</Link>;
   }
 });
 
 var ProfileName = React.createClass({
   render: function () {
     return <div>{this.props.name}</div>;
+  }
+});
+
+var Link = React.createClass({
+  changeURL: function () {
+    window.location.replace(this.props.href);
+  },
+  render: function () {
+    return (
+      <span
+        style={{color: 'blue'}}
+        onClick={this.changeURL}>
+        {this.props.children}
+      </span>
+    );
   }
 });
 
