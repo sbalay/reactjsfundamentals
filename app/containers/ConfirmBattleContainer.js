@@ -15,6 +15,14 @@ var ConfirmBattleContainer = React.createClass({
       playersInfo: []
     };
   },
+  handleInititateBattle: function () {
+    this.context.router.push({
+      pathname: '/results',
+      state: {
+        playersInfo: this.state.playersInfo
+      }
+    })
+  },
   componentDidMount: function () {
     var that = this;
     var query = this.props.location.query;
@@ -28,6 +36,7 @@ var ConfirmBattleContainer = React.createClass({
   render: function () {
     return <ConfirmBattle
               isLoading={this.state.isLoading}
+              onInitiateBattle={this.handleInititateBattle}
               playersInfo={this.state.playersInfo} />
   }
 });
